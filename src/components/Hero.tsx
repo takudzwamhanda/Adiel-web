@@ -135,7 +135,7 @@ const Hero: React.FC = () => {
           <div className="relative">
             <div className="relative z-10">
               <img
-                src="/src/adiel/adiel.JPEG"
+                src="/images/adiel.jpeg"
                 alt="Adiel - Beauty Expert"
                 className="w-full h-[600px] object-cover rounded-3xl shadow-2xl animate-float"
               />

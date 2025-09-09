@@ -14,7 +14,7 @@ const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onBrandSelect }) => {
       description: 'Premium beauty products trusted by millions worldwide. From skincare to fragrances, AVON delivers quality and innovation.',
       color: 'from-pink-500 to-pink-700',
       icon: Heart,
-      image: '/src/adiel/Avon/Avon page background.jpg'
+      image: '/images/Avon/Avon page background.jpg'
     },
     {
       name: 'AMITY',
@@ -22,7 +22,7 @@ const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onBrandSelect }) => {
       description: 'Luxury perfumes and skincare products crafted with the finest ingredients for the discerning customer.',
       color: 'from-yellow-500 to-yellow-700',
       icon: Crown,
-      image: '/src/adiel/Amity Background.jpg'
+      image: '/images/Amity Background.jpg'
     },
     {
       name: 'Arthur Ford',
@@ -30,7 +30,7 @@ const BrandShowcase: React.FC<BrandShowcaseProps> = ({ onBrandSelect }) => {
       description: 'Exquisite fragrances that capture elegance and sophistication in every bottle.',
       color: 'from-purple-500 to-purple-700',
       icon: Sparkles,
-      image: '/src/adiel/Arthur Ford/Arthur Ford page Background.jpg'
+      image: '/images/Arthur Ford/Arthur Ford page Background.jpg'
     }
   ];
 

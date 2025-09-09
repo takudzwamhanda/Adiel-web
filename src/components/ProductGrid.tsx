@@ -41,7 +41,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     // AMITY Products
     {
       id: 'amity-after-shave-balm',
-      image: '/src/adiel/Amity/Amity After ShaveBalm $5.jpeg',
+      image: '/images/Amity/Amity After ShaveBalm $5.jpeg',
       name: 'Amity After Shave Balm',
       brand: 'AMITY',
       price: '$5',
@@ -51,7 +51,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-bath-salts',
-      image: '/src/adiel/Amity/Amity Bath Salts $7.jpeg',
+      image: '/images/Amity/Amity Bath Salts $7.jpeg',
       name: 'Amity Bath Salts',
       brand: 'AMITY',
       price: '$7',
@@ -61,7 +61,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-braiding-spray',
-      image: '/src/adiel/Amity/Amity Braiding spray $6.jpeg',
+      image: '/images/Amity/Amity Braiding spray $6.jpeg',
       name: 'Amity Braiding Spray',
       brand: 'AMITY',
       price: '$6',
@@ -70,7 +70,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-facial-kit',
-      image: '/src/adiel/Amity/Amity Facial Kit $25.jpeg',
+      image: '/images/Amity/Amity Facial Kit $25.jpeg',
       name: 'Amity Facial Kit',
       brand: 'AMITY',
       price: '$25',
@@ -79,7 +79,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-female-perfumes',
-      image: '/src/adiel/Amity/Amity Female Perfumes $10.jpeg',
+      image: '/images/Amity/Amity Female Perfumes $10.jpeg',
       name: 'Amity Female Perfumes',
       brand: 'AMITY',
       price: '$10',
@@ -89,7 +89,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-foot-spray',
-      image: '/src/adiel/Amity/Amity FootSpray $5.jpeg',
+      image: '/images/Amity/Amity FootSpray $5.jpeg',
       name: 'Amity Foot Spray',
       brand: 'AMITY',
       price: '$5',
@@ -98,7 +98,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-hair-scalp-oil',
-      image: '/src/adiel/Amity/Amity Hair and Scalp oil treatment $6.jpeg',
+      image: '/images/Amity/Amity Hair and Scalp oil treatment $6.jpeg',
       name: 'Amity Hair and Scalp Oil Treatment',
       brand: 'AMITY',
       price: '$6',
@@ -107,7 +107,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-hand-body-cream',
-      image: '/src/adiel/Amity/Amity Hand & Body Cream $5.jpeg',
+      image: '/images/Amity/Amity Hand & Body Cream $5.jpeg',
       name: 'Amity Hand & Body Cream',
       brand: 'AMITY',
       price: '$5',
@@ -116,7 +116,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-hill-balm',
-      image: '/src/adiel/Amity/Amity Hill Balm $8.jpeg',
+      image: '/images/Amity/Amity Hill Balm $8.jpeg',
       name: 'Amity Hill Balm',
       brand: 'AMITY',
       price: '$8',
@@ -125,7 +125,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-male-perfumes',
-      image: '/src/adiel/Amity/Amity Male Perfumes $10.jpeg',
+      image: '/images/Amity/Amity Male Perfumes $10.jpeg',
       name: 'Amity Male Perfumes',
       brand: 'AMITY',
       price: '$10',
@@ -134,7 +134,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-shower-gel',
-      image: '/src/adiel/Amity/Amity shower gel $5.jpeg',
+      image: '/images/Amity/Amity shower gel $5.jpeg',
       name: 'Amity Shower Gel',
       brand: 'AMITY',
       price: '$5',
@@ -143,7 +143,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-skin-care',
-      image: '/src/adiel/Amity/Amity Skin Care $25.jpeg',
+      image: '/images/Amity/Amity Skin Care $25.jpeg',
       name: 'Amity Skin Care',
       brand: 'AMITY',
       price: '$25',
@@ -152,7 +152,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-tumeric-body',
-      image: '/src/adiel/Amity/Amity Tumeric Body $6.jpeg',
+      image: '/images/Amity/Amity Tumeric Body $6.jpeg',
       name: 'Amity Tumeric Body',
       brand: 'AMITY',
       price: '$6',
@@ -161,7 +161,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-tumeric-body-lotion',
-      image: '/src/adiel/Amity/Amity Tumeric Body Lotion $6.jpeg',
+      image: '/images/Amity/Amity Tumeric Body Lotion $6.jpeg',
       name: 'Amity Tumeric Body Lotion',
       brand: 'AMITY',
       price: '$6',
@@ -170,7 +170,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'amity-tumeric-scrub',
-      image: '/src/adiel/Amity/Amity Tumeric Scrub $10.jpeg',
+      image: '/images/Amity/Amity Tumeric Scrub $10.jpeg',
       name: 'Amity Tumeric Scrub',
       brand: 'AMITY',
       price: '$10',
@@ -181,7 +181,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     // AVON Products
     {
       id: 'avon-black-suede',
-      image: '/src/adiel/Avon/Avon Black Suede $18.jpg',
+      image: '/images/Avon/Avon Black Suede $18.jpg',
       name: 'Avon Black Suede',
       brand: 'AVON',
       price: '$18',
@@ -190,7 +190,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-blemish-clearing-set',
-      image: '/src/adiel/Avon/Avon Blemish Clearing Set $20.jpeg',
+      image: '/images/Avon/Avon Blemish Clearing Set $20.jpeg',
       name: 'Avon Blemish Clearing Set',
       brand: 'AVON',
       price: '$20',
@@ -199,7 +199,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-body-lotion-720ml',
-      image: '/src/adiel/Avon/Avon Body Lotion 720ml $10.jpeg',
+      image: '/images/Avon/Avon Body Lotion 720ml $10.jpeg',
       name: 'Avon Body Lotion 720ml',
       brand: 'AVON',
       price: '$10',
@@ -208,7 +208,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-body-lotion-handcream-12',
-      image: '/src/adiel/Avon/Avon Body Lotion and HandCream $12.jpeg',
+      image: '/images/Avon/Avon Body Lotion and HandCream $12.jpeg',
       name: 'Avon Body Lotion and Hand Cream',
       brand: 'AVON',
       price: '$12',
@@ -217,7 +217,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-body-lotion-handcream-8',
-      image: '/src/adiel/Avon/Avon Body Lotion and HandCream $8.jpeg',
+      image: '/images/Avon/Avon Body Lotion and HandCream $8.jpeg',
       name: 'Avon Body Lotion and Hand Cream',
       brand: 'AVON',
       price: '$8',
@@ -226,7 +226,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-body-sprays-her',
-      image: '/src/adiel/Avon/Avon Body Sprays For Her $6.jpeg',
+      image: '/images/Avon/Avon Body Sprays For Her $6.jpeg',
       name: 'Avon Body Sprays For Her',
       brand: 'AVON',
       price: '$6',
@@ -235,7 +235,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-body-sprays-him',
-      image: '/src/adiel/Avon/Avon Body Sprays For Him $6.jpeg',
+      image: '/images/Avon/Avon Body Sprays For Him $6.jpeg',
       name: 'Avon Body Sprays For Him',
       brand: 'AVON',
       price: '$6',
@@ -244,7 +244,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-body-wash',
-      image: '/src/adiel/Avon/Avon Body Wash $6.jpeg',
+      image: '/images/Avon/Avon Body Wash $6.jpeg',
       name: 'Avon Body Wash',
       brand: 'AVON',
       price: '$6',
@@ -253,7 +253,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-bubble-bath',
-      image: '/src/adiel/Avon/Avon Bubble Bath 500ml $5.jpeg',
+      image: '/images/Avon/Avon Bubble Bath 500ml $5.jpeg',
       name: 'Avon Bubble Bath 500ml',
       brand: 'AVON',
       price: '$5',
@@ -262,7 +262,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-charcoal-soap',
-      image: '/src/adiel/Avon/Avon Charcoal Soap $3.jpeg',
+      image: '/images/Avon/Avon Charcoal Soap $3.jpeg',
       name: 'Avon Charcoal Soap',
       brand: 'AVON',
       price: '$3',
@@ -271,7 +271,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-face-cream',
-      image: '/src/adiel/Avon/Avon Face Cream $5.jpeg',
+      image: '/images/Avon/Avon Face Cream $5.jpeg',
       name: 'Avon Face Cream',
       brand: 'AVON',
       price: '$5',
@@ -280,7 +280,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-feminine-wash',
-      image: '/src/adiel/Avon/Avon Feminine Wash 250ml $6.jpg',
+      image: '/images/Avon/Avon Feminine Wash 250ml $6.jpg',
       name: 'Avon Feminine Wash 250ml',
       brand: 'AVON',
       price: '$6',
@@ -289,7 +289,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-foot-works',
-      image: '/src/adiel/Avon/Avon foot works $5 each.jpg',
+      image: '/images/Avon/Avon foot works $5 each.jpg',
       name: 'Avon Foot Works',
       brand: 'AVON',
       price: '$5',
@@ -298,7 +298,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-hand-cream',
-      image: '/src/adiel/Avon/Avon Hand Cream $3.jpeg',
+      image: '/images/Avon/Avon Hand Cream $3.jpeg',
       name: 'Avon Hand Cream',
       brand: 'AVON',
       price: '$3',
@@ -307,7 +307,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-imari-set',
-      image: '/src/adiel/Avon/Avon Imari set $25.jpeg',
+      image: '/images/Avon/Avon Imari set $25.jpeg',
       name: 'Avon Imari Set',
       brand: 'AVON',
       price: '$25',
@@ -316,7 +316,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-lip-oils',
-      image: '/src/adiel/Avon/Avon Lip oils $10.jpeg',
+      image: '/images/Avon/Avon Lip oils $10.jpeg',
       name: 'Avon Lip Oils',
       brand: 'AVON',
       price: '$10',
@@ -325,7 +325,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-lipsticks',
-      image: '/src/adiel/Avon/Avon Lipsticks $10.jpg',
+      image: '/images/Avon/Avon Lipsticks $10.jpg',
       name: 'Avon Lipsticks',
       brand: 'AVON',
       price: '$10',
@@ -334,7 +334,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-onduty-rollon',
-      image: '/src/adiel/Avon/Avon Onduty RollOn $3.jpg',
+      image: '/images/Avon/Avon Onduty RollOn $3.jpg',
       name: 'Avon On Duty Roll On',
       brand: 'AVON',
       price: '$3',
@@ -343,7 +343,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'avon-scented-body-lotion',
-      image: '/src/adiel/Avon/Avon Scented Body Lotion $6.jpg',
+      image: '/images/Avon/Avon Scented Body Lotion $6.jpg',
       name: 'Avon Scented Body Lotion',
       brand: 'AVON',
       price: '$6',
@@ -354,7 +354,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     // Arthur Ford Products
     {
       id: 'arthur-ford-body-lotion',
-      image: '/src/adiel/Arthur Ford/Arthur Ford Body Lotion.jfif',
+      image: '/images/Arthur Ford/Arthur Ford Body Lotion.jfif',
       name: 'Arthur Ford Body Lotion',
       brand: 'Arthur Ford',
       price: '$15',
@@ -363,7 +363,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
     },
     {
       id: 'arthur-ford-perfume-men',
-      image: '/src/adiel/Arthur Ford/Arthur Ford perfume for men.jpg',
+      image: '/images/Arthur Ford/Arthur Ford perfume for men.jpg',
       name: 'Arthur Ford Perfume for Men',
       brand: 'Arthur Ford',
       price: '$25',

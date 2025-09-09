@@ -1,8 +1,9 @@
 import React from 'react';
 import { Star, Quote } from 'lucide-react';
-import Nicole1 from '@/images/Nicole1.jpeg';
-import Nicole2 from '@/images/Nicole2.jpeg';
-import Tafadzwa from '@/images/Tafadzwa.jpeg';
+// Images are now served from public folder
+const Nicole1 = '/images/Nicole1.jpeg';
+const Nicole2 = '/images/Nicole2.jpeg';
+const Tafadzwa = '/images/Tafadzwa.jpeg';
 
 const Testimonials: React.FC = () => {
   const testimonials = [
