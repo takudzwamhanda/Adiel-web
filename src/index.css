@@ -114,6 +114,356 @@
       transform: translateY(-20px);
     }
   }
+
+  /* Glowing Card Animation */
+  .glowing-card {
+    position: relative !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%) !important;
+    border: 1px solid transparent !important;
+    background-clip: padding-box !important;
+    box-shadow: 
+      0 4px 20px rgba(236, 72, 153, 0.15),
+      0 2px 10px rgba(147, 51, 234, 0.1) !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  }
+
+  .glowing-card::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -2px !important;
+    left: -2px !important;
+    right: -2px !important;
+    bottom: -2px !important;
+    border-radius: 1.125rem !important;
+    padding: 3px !important;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.8) 0%, 
+      rgba(147, 51, 234, 0.8) 25%, 
+      rgba(59, 130, 246, 0.8) 50%, 
+      rgba(16, 185, 129, 0.8) 75%, 
+      rgba(236, 72, 153, 0.8) 100%) !important;
+    background-size: 300% 300% !important;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    mask-composite: xor !important;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0) !important;
+    -webkit-mask-composite: xor !important;
+    opacity: 0.4 !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    animation: gradient-shift 4s ease infinite !important;
+    z-index: 1 !important;
+  }
+
+  .glowing-card:hover::before {
+    opacity: 1 !important;
+    padding: 4px !important;
+    top: -3px !important;
+    left: -3px !important;
+    right: -3px !important;
+    bottom: -3px !important;
+  }
+
+  .glowing-card:hover {
+    animation: none !important;
+    transform: translateY(-12px) scale(1.02) !important;
+    box-shadow: 
+      0 25px 50px rgba(236, 72, 153, 0.4),
+      0 15px 30px rgba(147, 51, 234, 0.3),
+      0 5px 15px rgba(59, 130, 246, 0.2),
+      0 0 0 1px rgba(236, 72, 153, 0.4) !important;
+  }
+
+  @keyframes gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 100% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  /* Enhanced glow effect for buttons */
+  .glowing-card .group-hover\:scale-105 {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glowing-card:hover .group-hover\:scale-105 {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+  }
+
+  /* Ensure content is above the glowing border */
+  .glowing-card > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Add a subtle pulsing glow effect */
+  .glowing-card::after {
+    content: '' !important;
+    position: absolute !important;
+    top: -4px !important;
+    left: -4px !important;
+    right: -4px !important;
+    bottom: -4px !important;
+    border-radius: 1.25rem !important;
+    background: linear-gradient(135deg, 
+      rgba(236, 72, 153, 0.1) 0%, 
+      rgba(147, 51, 234, 0.1) 25%, 
+      rgba(59, 130, 246, 0.1) 50%, 
+      rgba(16, 185, 129, 0.1) 75%, 
+      rgba(236, 72, 153, 0.1) 100%) !important;
+    background-size: 300% 300% !important;
+    opacity: 0.3 !important;
+    animation: gradient-shift 6s ease infinite, pulse-glow 3s ease-in-out infinite !important;
+    z-index: 0 !important;
+    filter: blur(8px) !important;
+  }
+
+  .glowing-card:hover::after {
+    opacity: 0.6 !important;
+    filter: blur(12px) !important;
+  }
+
+  @keyframes pulse-glow {
+    0% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    25% {
+      opacity: 0.4;
+      transform: scale(1.02);
+    }
+    50% {
+      opacity: 0.6;
+      transform: scale(1.05);
+    }
+    75% {
+      opacity: 0.4;
+      transform: scale(1.02);
+    }
+    100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+  }
+
+  /* Bouncing Logo Animation */
+  .bounce-logo {
+    animation: logo-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes logo-bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    10% {
+      transform: translateY(-8px) scale(1.05);
+    }
+    30% {
+      transform: translateY(-4px) scale(1.02);
+    }
+    60% {
+      transform: translateY(-6px) scale(1.03);
+    }
+  }
+
+  /* Enhanced logo hover effect */
+  .logo-container:hover .bounce-logo {
+    animation: logo-bounce 0.6s ease-in-out infinite;
+  }
+
+  /* Subtle floating animation for cards */
+  .glowing-card {
+    animation: subtle-float 6s ease-in-out infinite;
+  }
+
+  .glowing-card:nth-child(2n) {
+    animation-delay: -2s;
+  }
+
+  .glowing-card:nth-child(3n) {
+    animation-delay: -4s;
+  }
+
+  @keyframes subtle-float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-3px);
+    }
+  }
+
+  /* Contact Page Background Animations */
+  .contact-background {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .contact-background::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+      rgba(236, 72, 153, 0.1) 0%, 
+      rgba(147, 51, 234, 0.1) 25%, 
+      rgba(59, 130, 246, 0.1) 50%, 
+      rgba(16, 185, 129, 0.1) 75%, 
+      rgba(236, 72, 153, 0.1) 100%);
+    background-size: 400% 400%;
+    animation: contact-gradient-shift 8s ease infinite;
+    z-index: 0;
+  }
+
+  .contact-background::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      radial-gradient(circle at 20% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 60% 40%, rgba(16, 185, 129, 0.1) 0%, transparent 50%);
+    animation: contact-float 12s ease-in-out infinite;
+    z-index: 0;
+  }
+
+  @keyframes contact-gradient-shift {
+    0% {
+      background-position: 0% 50%;
+    }
+    25% {
+      background-position: 100% 0%;
+    }
+    50% {
+      background-position: 100% 100%;
+    }
+    75% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  @keyframes contact-float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-20px) rotate(1deg);
+    }
+    66% {
+      transform: translateY(-10px) rotate(-1deg);
+    }
+  }
+
+  /* Floating Beauty Elements */
+  .floating-element {
+    position: absolute;
+    opacity: 0.1;
+    animation: float-around 15s linear infinite;
+    z-index: 1;
+  }
+
+  .floating-element:nth-child(1) {
+    top: 10%;
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 20s;
+  }
+
+  .floating-element:nth-child(2) {
+    top: 20%;
+    right: 15%;
+    animation-delay: -5s;
+    animation-duration: 18s;
+  }
+
+  .floating-element:nth-child(3) {
+    bottom: 30%;
+    left: 20%;
+    animation-delay: -10s;
+    animation-duration: 22s;
+  }
+
+  .floating-element:nth-child(4) {
+    bottom: 20%;
+    right: 10%;
+    animation-delay: -15s;
+    animation-duration: 16s;
+  }
+
+  .floating-element:nth-child(5) {
+    top: 50%;
+    left: 5%;
+    animation-delay: -8s;
+    animation-duration: 25s;
+  }
+
+  .floating-element:nth-child(6) {
+    top: 60%;
+    right: 5%;
+    animation-delay: -12s;
+    animation-duration: 19s;
+  }
+
+  @keyframes float-around {
+    0% {
+      transform: translateY(0px) translateX(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-30px) translateX(20px) rotate(90deg);
+    }
+    50% {
+      transform: translateY(-60px) translateX(-10px) rotate(180deg);
+    }
+    75% {
+      transform: translateY(-30px) translateX(-20px) rotate(270deg);
+    }
+    100% {
+      transform: translateY(0px) translateX(0px) rotate(360deg);
+    }
+  }
+
+  /* Ensure contact content is above background */
+  .contact-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Customer Image Animations */
+  .customer-image {
+    animation: gentle-pulse 4s ease-in-out infinite;
+  }
+
+  @keyframes gentle-pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  .glowing-card:hover .customer-image {
+    animation: none;
+  }
 }
 
 .markdown-editor {

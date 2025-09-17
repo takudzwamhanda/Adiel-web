@@ -296,7 +296,7 @@ const AuthDashboard: React.FC = () => {
                 <h3 className="text-xl font-bold mb-4">Why Choose Adiel Beauty?</h3>
                 <div className="grid grid-cols-2 gap-4 text-sm">
                   <div className="text-center">
-                    <div className="text-2xl font-bold">500+</div>
+                    <div className="text-2xl font-bold">100+</div>
                     <div className="opacity-90">Happy Customers</div>
                   </div>
                   <div className="text-center">

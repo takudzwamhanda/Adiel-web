@@ -6,7 +6,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 const Header: React.FC = () => {
   const { cart, removeFromCart, updateCartItemQuantity, cartTotal, cartItemCount, user, setUser } = useAppContext();
-  const { signOutUser } = useFirebase();
+  const { signOutUser, addReview, user: firebaseUser, reviews, getReviews } = useFirebase();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
   const [selectedOrderMethod, setSelectedOrderMethod] = useState('');
@@ -15,6 +15,7 @@ const Header: React.FC = () => {
   const [showRatingModal, setShowRatingModal] = useState(false);
   const [rating, setRating] = useState(0);
   const [ratingComment, setRatingComment] = useState('');
+  const [showReviewsModal, setShowReviewsModal] = useState(false);
   const navigate = useNavigate();
 
   // Toggle sidebar function
@@ -120,13 +121,24 @@ const Header: React.FC = () => {
   };
 
   // Handle rating submission
-  const handleRatingSubmit = () => {
+  const handleRatingSubmit = async () => {
     if (rating === 0) {
       alert('Please select a rating');
       return;
     }
 
-    // Get current stats from localStorage
+    try {
+      // Check if user is logged in
+      if (!firebaseUser) {
+        alert('Please log in to submit a review');
+        return;
+      }
+
+      // Add review to Firebase database
+      // Using 'general' as productId for general service reviews
+      await addReview('general-service', rating, ratingComment || 'General service rating');
+
+      // Get current stats from localStorage for display purposes
     const savedStats = localStorage.getItem('adiel-rating-stats');
     let currentStats = {
       averageRating: 0.0,
@@ -138,36 +150,46 @@ const Header: React.FC = () => {
       currentStats = JSON.parse(savedStats);
     }
 
-    // Calculate new average rating
+      // Calculate new average rating for display
     const newTotalRatings = currentStats.totalRatings + 1;
     const newTotalRating = (currentStats.averageRating * currentStats.totalRatings) + rating;
     const newAverageRating = newTotalRating / newTotalRatings;
 
-    // Update stats
+      // Update stats for display
     const updatedStats = {
       averageRating: newAverageRating,
       totalRatings: newTotalRatings,
-      totalCustomers: Math.max(currentStats.totalCustomers, newTotalRatings) // Customers = ratings for now
+        totalCustomers: Math.max(currentStats.totalCustomers, newTotalRatings)
     };
 
-    // Save to localStorage
+      // Save to localStorage for display purposes
     localStorage.setItem('adiel-rating-stats', JSON.stringify(updatedStats));
 
     // Dispatch custom event to update Hero component
     window.dispatchEvent(new CustomEvent('ratingUpdated', { detail: updatedStats }));
 
     // Show success message
-    alert(`Thank you for your ${rating}-star rating! Your feedback helps us improve our service.`);
+      alert(`Thank you for your ${rating}-star rating! Your feedback has been saved and helps us improve our service.`);
     
     // Reset rating form
     setRating(0);
     setRatingComment('');
     setShowRatingModal(false);
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      alert('There was an error submitting your review. Please try again.');
+    }
   };
 
   // Handle star click
   const handleStarClick = (starRating: number) => {
     setRating(starRating);
+  };
+
+  // Handle reviews modal
+  const handleShowReviews = async () => {
+    setShowReviewsModal(true);
+    await getReviews();
   };
 
   // Send order to WhatsApp
@@ -253,8 +275,8 @@ Please confirm this order and provide payment details for ${orderSummary.payment
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center">
+          <Link to="/" className="flex items-center space-x-2 logo-container">
+            <div className="w-8 h-8 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full flex items-center justify-center bounce-logo">
               <span className="text-white font-bold text-sm">AB</span>
             </div>
             <span className="text-xl font-bold text-gray-800">Adiel Beauty</span>
@@ -273,6 +295,18 @@ Please confirm this order and provide payment details for ${orderSummary.payment
             >
               <Star className="w-4 h-4" />
               <span>Rate Us</span>
+            </button>
+            <button
+              onClick={() => {
+                const testimonialsSection = document.getElementById('testimonials');
+                if (testimonialsSection) {
+                  testimonialsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
+              className="flex items-center space-x-1 text-gray-600 hover:text-pink-500 transition-colors"
+            >
+              <Heart className="w-4 h-4" />
+              <span>Reviews</span>
             </button>
           </nav>
 
@@ -628,6 +662,94 @@ Please confirm this order and provide payment details for ${orderSummary.payment
                   className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-2 rounded-lg font-semibold hover:shadow-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   Submit Rating
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Reviews Modal */}
+      {showReviewsModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg max-w-4xl w-full max-h-[80vh] overflow-hidden">
+            <div className="flex items-center justify-between p-6 border-b">
+              <h3 className="text-xl font-semibold text-gray-800">Customer Reviews</h3>
+              <button
+                onClick={() => setShowReviewsModal(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+            
+            <div className="p-6 overflow-y-auto max-h-[60vh]">
+              {reviews.length === 0 ? (
+                <div className="text-center py-12">
+                  <Star className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                  <h4 className="text-lg font-semibold text-gray-600 mb-2">No Reviews Yet</h4>
+                  <p className="text-gray-500">Be the first to rate our service!</p>
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  {reviews.map((review) => (
+                    <div key={review.id} className="bg-gray-50 rounded-lg p-4 border">
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-center space-x-3">
+                          <div className="w-8 h-8 bg-pink-100 rounded-full flex items-center justify-center">
+                            <Star className="w-4 h-4 text-pink-600" />
+                          </div>
+                          <div>
+                            <div className="font-medium text-gray-800">
+                              {review.user_id.substring(0, 8)}...
+                            </div>
+                            <div className="text-sm text-gray-500">
+                              {review.product_id}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="text-right">
+                          <div className="flex items-center space-x-1 mb-1">
+                            {[...Array(5)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className={`w-4 h-4 ${
+                                  i < review.rating
+                                    ? 'text-yellow-400 fill-current'
+                                    : 'text-gray-300'
+                                }`}
+                              />
+                            ))}
+                          </div>
+                          <div className="text-xs text-gray-500">
+                            {review.created_at instanceof Date
+                              ? review.created_at.toLocaleDateString()
+                              : new Date(review.created_at).toLocaleDateString()}
+                          </div>
+                        </div>
+                      </div>
+                      
+                      {review.comment && review.comment !== 'General service rating' && (
+                        <div className="bg-white rounded p-3 border-l-4 border-pink-200">
+                          <p className="text-gray-700 text-sm">{review.comment}</p>
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+            
+            <div className="p-6 border-t bg-gray-50">
+              <div className="flex justify-between items-center">
+                <div className="text-sm text-gray-600">
+                  Total Reviews: {reviews.length}
+                </div>
+                <button
+                  onClick={() => setShowReviewsModal(false)}
+                  className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 transition-colors"
+                >
+                  Close
                 </button>
               </div>
             </div>

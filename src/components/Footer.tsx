@@ -25,18 +25,62 @@ const Footer: React.FC = () => {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <div className="bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              <button 
+                onClick={() => {
+                  const productsSection = document.getElementById('products');
+                  if (productsSection) {
+                    productsSection.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                      window.dispatchEvent(new CustomEvent('filterByBrand', { detail: 'AVON' }));
+                    }, 500);
+                  }
+                }}
+                className="bg-pink-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-pink-700 transition-colors cursor-pointer"
+              >
                 #AVON
-              </div>
-              <div className="bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              </button>
+              <button 
+                onClick={() => {
+                  const productsSection = document.getElementById('products');
+                  if (productsSection) {
+                    productsSection.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                      window.dispatchEvent(new CustomEvent('filterByBrand', { detail: 'AMITY' }));
+                    }, 500);
+                  }
+                }}
+                className="bg-yellow-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-yellow-700 transition-colors cursor-pointer"
+              >
                 #Amity
-              </div>
-              <div className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              </button>
+              <button 
+                onClick={() => {
+                  const productsSection = document.getElementById('products');
+                  if (productsSection) {
+                    productsSection.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                      window.dispatchEvent(new CustomEvent('filterByBrand', { detail: 'Arthur Ford' }));
+                    }, 500);
+                  }
+                }}
+                className="bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-purple-700 transition-colors cursor-pointer"
+              >
                 #ArthurFord
-              </div>
-              <div className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              </button>
+              <button 
+                onClick={() => {
+                  const productsSection = document.getElementById('products');
+                  if (productsSection) {
+                    productsSection.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                      window.dispatchEvent(new CustomEvent('filterByBrand', { detail: 'Arthur Ford' }));
+                    }, 500);
+                  }
+                }}
+                className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition-colors cursor-pointer"
+              >
                 #FineFragrances
-              </div>
+              </button>
             </div>
           </div>
 
@@ -106,7 +150,7 @@ const Footer: React.FC = () => {
         <div className="border-t border-gray-800 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-center md:text-left">
-              © 2024 Adiel Beauty. All rights reserved. Brands that guarantee Customer Satisfaction.
+              © 2025 Adiel Beauty. All rights reserved. Brands that guarantee Customer Satisfaction.
             </p>
             
             <div className="flex items-center space-x-2 mt-4 md:mt-0">

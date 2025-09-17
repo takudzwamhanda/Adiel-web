@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Phone, Mail, MapPin, MessageCircle, Clock, Shield } from 'lucide-react';
+import { Phone, Mail, MapPin, MessageCircle, Clock, Shield, Heart, Star, Sparkles, Flower2 } from 'lucide-react';
 import { EMAILJS_CONFIG } from '@/config/emailjs';
 
 // Import EmailJS properly
@@ -94,8 +94,28 @@ const Contact: React.FC = () => {
                      formData.message.trim();
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-br from-pink-50 to-purple-50">
-      <div className="container mx-auto px-4">
+    <section id="contact" className="py-20 bg-gradient-to-br from-pink-50 to-purple-50 contact-background">
+      {/* Floating Beauty Elements */}
+      <div className="floating-element">
+        <Heart className="w-8 h-8 text-pink-400" />
+      </div>
+      <div className="floating-element">
+        <Star className="w-6 h-6 text-yellow-400" />
+      </div>
+      <div className="floating-element">
+        <Sparkles className="w-7 h-7 text-purple-400" />
+      </div>
+      <div className="floating-element">
+        <Flower2 className="w-5 h-5 text-green-400" />
+      </div>
+      <div className="floating-element">
+        <Heart className="w-6 h-6 text-pink-300" />
+      </div>
+      <div className="floating-element">
+        <Star className="w-8 h-8 text-yellow-300" />
+      </div>
+      
+      <div className="container mx-auto px-4 contact-content">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             Get In Touch
@@ -108,7 +128,7 @@ const Contact: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Information */}
           <div className="space-y-8">
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
+            <div className="bg-white rounded-2xl p-8 shadow-xl glowing-card">
               <h3 className="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
               
               <div className="space-y-6">
@@ -166,7 +186,7 @@ const Contact: React.FC = () => {
             </div>
 
             {/* Why Choose Us */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
+            <div className="bg-white rounded-2xl p-8 shadow-xl glowing-card">
               <h3 className="text-2xl font-bold text-gray-800 mb-6">Why Choose Adiel Beauty?</h3>
               
               <div className="space-y-4">
@@ -191,7 +211,7 @@ const Contact: React.FC = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white rounded-2xl p-8 shadow-xl">
+          <div className="bg-white rounded-2xl p-8 shadow-xl glowing-card">
             <h3 className="text-2xl font-bold text-gray-800 mb-6">Send us a Message</h3>
             
             {/* Status Messages */}

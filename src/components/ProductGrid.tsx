@@ -30,10 +30,19 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       setSelectedBrand('All');
     };
 
+    const handleFilterByBrand = (event: CustomEvent) => {
+      const brandName = event.detail;
+      setShowAllProducts(true);
+      setSelectedCategory('All');
+      setSelectedBrand(brandName);
+    };
+
     window.addEventListener('showAllProducts', handleShowAllProducts);
+    window.addEventListener('filterByBrand', handleFilterByBrand as EventListener);
     
     return () => {
       window.removeEventListener('showAllProducts', handleShowAllProducts);
+      window.removeEventListener('filterByBrand', handleFilterByBrand as EventListener);
     };
   }, []);
 
@@ -75,7 +84,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AMITY',
       price: '$25',
       rating: 5,
-      category: 'Skincare'
+      category: 'Skincare',
+      gender: 'unisex'
     },
     {
       id: 'amity-female-perfumes',
@@ -130,7 +140,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AMITY',
       price: '$10',
       rating: 4.5,
-      category: 'Fragrance'
+      category: 'Fragrance',
+      gender: 'male'
     },
     {
       id: 'amity-shower-gel',
@@ -148,7 +159,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AMITY',
       price: '$25',
       rating: 5,
-      category: 'Skincare'
+      category: 'Skincare',
+      gender: 'unisex'
     },
     {
       id: 'amity-tumeric-body',
@@ -186,7 +198,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AVON',
       price: '$18',
       rating: 4.5,
-      category: 'Fragrance'
+      category: 'Fragrance',
+      gender: 'male'
     },
     {
       id: 'avon-blemish-clearing-set',
@@ -195,7 +208,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AVON',
       price: '$20',
       rating: 4.5,
-      category: 'Skincare'
+      category: 'Skincare',
+      gender: 'unisex'
     },
     {
       id: 'avon-body-lotion-720ml',
@@ -231,7 +245,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AVON',
       price: '$6',
       rating: 4,
-      category: 'Fragrance'
+      category: 'Fragrance',
+      gender: 'female'
     },
     {
       id: 'avon-body-sprays-him',
@@ -240,7 +255,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AVON',
       price: '$6',
       rating: 4,
-      category: 'Fragrance'
+      category: 'Fragrance',
+      gender: 'male'
     },
     {
       id: 'avon-body-wash',
@@ -312,7 +328,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AVON',
       price: '$25',
       rating: 5,
-      category: 'Fragrance'
+      category: 'Fragrance',
+      gender: 'female'
     },
     {
       id: 'avon-lip-oils',
@@ -321,7 +338,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AVON',
       price: '$10',
       rating: 4.5,
-      category: 'Makeup'
+      category: 'Makeup',
+      gender: 'female'
     },
     {
       id: 'avon-lipsticks',
@@ -330,7 +348,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'AVON',
       price: '$10',
       rating: 4.5,
-      category: 'Makeup'
+      category: 'Makeup',
+      gender: 'female'
     },
     {
       id: 'avon-onduty-rollon',
@@ -359,7 +378,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
       brand: 'Arthur Ford',
       price: '$15',
       rating: 4.5,
-      category: 'Body Care'
+      category: 'Body Care',
+      gender: 'unisex'
     },
     {
       id: 'arthur-ford-perfume-men',
@@ -376,30 +396,51 @@ const ProductGrid: React.FC<ProductGridProps> = ({ selectedBrandFromBrands }) =>
   const categories = ['All', 'Skincare', 'Body Care', 'Fragrance', 'Hair Care', 'Hand Care', 'Makeup', 'Deodorant'];
   const brands = ['All', 'AMITY', 'AVON', 'Arthur Ford'];
 
-  // Featured products - best from each brand
-  const featuredProducts = [
-    // Best AMITY products
-    products.find(p => p.id === 'amity-facial-kit'),
-    products.find(p => p.id === 'amity-skin-care'),
-    products.find(p => p.id === 'amity-female-perfumes'),
-    products.find(p => p.id === 'amity-male-perfumes'),
-    
-    // Best AVON products
-    products.find(p => p.id === 'avon-imari-set'),
-    products.find(p => p.id === 'avon-blemish-clearing-set'),
-    products.find(p => p.id === 'avon-black-suede'),
-    products.find(p => p.id === 'avon-lipsticks'),
-    
-    // Best Arthur Ford products
-    products.find(p => p.id === 'arthur-ford-perfume-men'),
-    products.find(p => p.id === 'arthur-ford-body-lotion'),
-  ].filter(Boolean);
+  // Featured products - best from each brand, filtered by gender
+  const getFeaturedProducts = () => {
+    const allFeatured = [
+      // Best AMITY products
+      products.find(p => p.id === 'amity-facial-kit'),
+      products.find(p => p.id === 'amity-skin-care'),
+      products.find(p => p.id === 'amity-female-perfumes'),
+      products.find(p => p.id === 'amity-male-perfumes'),
+      
+      // Best AVON products
+      products.find(p => p.id === 'avon-imari-set'),
+      products.find(p => p.id === 'avon-blemish-clearing-set'),
+      products.find(p => p.id === 'avon-black-suede'),
+      products.find(p => p.id === 'avon-lipsticks'),
+      
+      // Best Arthur Ford products
+      products.find(p => p.id === 'arthur-ford-perfume-men'),
+      products.find(p => p.id === 'arthur-ford-body-lotion'),
+    ].filter(Boolean);
+
+    // Filter by gender
+    return allFeatured.filter(product => {
+      const productGender = product.gender || 'unisex';
+      if (selectedGender === 'unisex') {
+        return true; // Show all products when "All" is selected
+      }
+      return productGender === selectedGender || productGender === 'unisex';
+    });
+  };
+
+  const featuredProducts = getFeaturedProducts();
 
   const filteredProducts = products.filter(product => {
     const categoryMatch = selectedCategory === 'All' || product.category === selectedCategory;
     const brandMatch = selectedBrand === 'All' || product.brand === selectedBrand;
     const productGender = product.gender || 'unisex'; // Default to unisex if no gender specified
-    const genderMatch = selectedGender === 'unisex' || productGender === selectedGender || productGender === 'unisex';
+    
+    // Gender filtering logic
+    let genderMatch;
+    if (selectedGender === 'unisex') {
+      genderMatch = true; // Show all products when "All" is selected
+    } else {
+      genderMatch = productGender === selectedGender || productGender === 'unisex';
+    }
+    
     return categoryMatch && brandMatch && genderMatch;
   });
 

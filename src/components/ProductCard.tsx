@@ -37,7 +37,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   };
 
   return (
-    <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col h-full">
+    <div className="relative bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col h-full glowing-card">
       {/* Product Image */}
       <div className="relative overflow-hidden">
         <img
@@ -51,19 +51,25 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
           <div className="flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
             <button
               onClick={handleQuickView}
-              className="bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110"
+              className="bg-white p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 relative overflow-hidden group/eye"
             >
-              <Eye className="w-5 h-5 text-gray-700" />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 opacity-0 group-hover/eye:opacity-20 transition-opacity duration-300 rounded-full"></div>
+              <Eye className="w-5 h-5 text-gray-700 relative z-10" />
             </button>
             <button
               onClick={handleToggleWishlist}
-              className={`p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 ${
+              className={`p-3 rounded-full shadow-lg hover:shadow-xl transition-all hover:scale-110 relative overflow-hidden group/heart ${
                 isInWishlistState 
                   ? 'bg-pink-500 text-white' 
                   : 'bg-white text-gray-700'
               }`}
             >
-              <Heart className={`w-5 h-5 ${isInWishlistState ? 'fill-current' : ''}`} />
+              <div className={`absolute inset-0 opacity-0 group-hover/heart:opacity-20 transition-opacity duration-300 rounded-full ${
+                isInWishlistState 
+                  ? 'bg-gradient-to-r from-pink-400 to-red-500' 
+                  : 'bg-gradient-to-r from-pink-400 to-red-500'
+              }`}></div>
+              <Heart className={`w-5 h-5 relative z-10 ${isInWishlistState ? 'fill-current' : ''}`} />
             </button>
           </div>
         </div>
@@ -102,10 +108,12 @@ const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className="mt-auto">
           <button
             onClick={handleAddToCart}
-            className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center space-x-2"
+            className="w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:shadow-lg transition-all transform hover:scale-105 flex items-center justify-center space-x-2 relative overflow-hidden group/btn"
           >
-            <ShoppingCart className="w-5 h-5" />
-            <span>Add to Cart</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-pink-400 to-purple-500 opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></div>
+            <div className="absolute inset-0 bg-white opacity-0 group-hover/btn:opacity-20 transition-opacity duration-300"></div>
+            <ShoppingCart className="w-5 h-5 relative z-10" />
+            <span className="relative z-10">Add to Cart</span>
           </button>
         </div>
       </div>

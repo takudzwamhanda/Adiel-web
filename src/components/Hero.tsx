@@ -109,7 +109,7 @@ const Hero: React.FC = () => {
             <div className="mt-12 flex flex-wrap items-center justify-center lg:justify-start gap-8">
               <div className="text-center">
                 <div className="text-2xl font-bold text-gray-800">
-                  {ratingStats.totalCustomers > 0 ? `${ratingStats.totalCustomers}+` : '0'}
+                  100+
                 </div>
                 <div className="text-sm text-gray-600">Happy Customers</div>
               </div>

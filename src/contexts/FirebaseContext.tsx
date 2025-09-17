@@ -110,6 +110,7 @@ interface FirebaseContextType {
   removeFromWishlist: (productId: string) => Promise<void>;
   createOrder: (items: CartItem[], shippingAddress: string) => Promise<void>;
   addReview: (productId: string, rating: number, comment: string) => Promise<void>;
+  getReviews: () => Promise<void>;
 }
 
 const FirebaseContext = createContext<FirebaseContextType | undefined>(undefined);
@@ -213,6 +214,22 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({ children }) 
         return dateB.getTime() - dateA.getTime();
       });
       setOrders(orderItems);
+
+      // Load reviews
+      const reviewsQuery = query(collection(db, 'reviews'));
+      const reviewsSnapshot = await getDocs(reviewsQuery);
+      const reviewItems = reviewsSnapshot.docs.map(doc => ({ 
+        id: doc.id, 
+        ...doc.data(),
+        created_at: doc.data().created_at?.toDate() || new Date()
+      } as Review));
+      // Sort reviews by created_at in JavaScript
+      reviewItems.sort((a, b) => {
+        const dateA = a.created_at instanceof Date ? a.created_at : new Date(a.created_at);
+        const dateB = b.created_at instanceof Date ? b.created_at : new Date(b.created_at);
+        return dateB.getTime() - dateA.getTime();
+      });
+      setReviews(reviewItems);
     } catch (error) {
       console.warn('Could not load user data (this is normal if Firebase rules are not configured):', error);
       // Don't throw error - just log it as a warning
@@ -220,6 +237,7 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({ children }) 
       setCart([]);
       setWishlist([]);
       setOrders([]);
+      setReviews([]);
     }
   };
 
@@ -435,6 +453,27 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({ children }) 
     }
   };
 
+  const getReviews = async () => {
+    try {
+      const reviewsQuery = query(collection(db, 'reviews'));
+      const reviewsSnapshot = await getDocs(reviewsQuery);
+      const reviewItems = reviewsSnapshot.docs.map(doc => ({ 
+        id: doc.id, 
+        ...doc.data(),
+        created_at: doc.data().created_at?.toDate() || new Date()
+      } as Review));
+      // Sort reviews by created_at in JavaScript
+      reviewItems.sort((a, b) => {
+        const dateA = a.created_at instanceof Date ? a.created_at : new Date(a.created_at);
+        const dateB = b.created_at instanceof Date ? b.created_at : new Date(b.created_at);
+        return dateB.getTime() - dateA.getTime();
+      });
+      setReviews(reviewItems);
+    } catch (error) {
+      console.error('Error loading reviews:', error);
+    }
+  };
+
   const value: FirebaseContextType = {
     user,
     profile,
@@ -454,7 +493,8 @@ export const FirebaseProvider: React.FC<FirebaseProviderProps> = ({ children }) 
     addToWishlist,
     removeFromWishlist,
     createOrder,
-    addReview
+    addReview,
+    getReviews
   };
 
   return (
